@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informasi Stok Buku | BookStore</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/data.js" defer></script>
+    <script src="js/script.js" defer></script>
+</head>
+<body class="stok-page">
+    <header class="dashboard-header">
+        <div class="brand">
+            <h1>BookStore</h1>
+            <p>Informasi stok dan katalog buku</p>
+        </div>
+
+        <div class="header-user">
+            <a href="dashboard.html" class="btn-back">
+                ← Dashboard
+            </a>
+        </div>
+    </header>
+
+    <main class="stok-container">
+        <section class="stok-heading">
+            <h2>Informasi stok/katalog buku</h2>
+            <p>Berikut merupakan daftar buku yang tersedia pada toko buku BookStore.</p>
+        </section>
+
+
+        <!--ringkasan katalog-->
+        <section class="stok-summary">
+
+            <div class="summary-card">
+                <p>Total Jenis Buku</p>
+                <h3 id="totalJenisBuku">0</h3>
+            </div>
+
+            <div class="summary-card">
+                <p>Total Stok Buku</p>
+                <h3 id="totalStokBuku">0</h3>
+            </div>
+        </section>
+
+        <!--form tambah stok-->
+        <section class="stok-form-section">
+
+            <div class="section-heading">
+                <h2>Tambah Data Stok</h2>
+                <p>Masukkan informasi buku yang ingin ditambahkan.</p>
+            </div>
+
+            <form id="formTambahStok">
+
+                <div class="stok-form-grid">
+
+                    <div class="form-group">
+                        <label for="kodeBarang">Kode Barang</label>
+                        <input
+                            type="text"
+                            id="kodeBarang"
+                            placeholder="Contoh: TI4301"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="namaBarang">Nama Buku</label>
+                        <input
+                            type="text"
+                            id="namaBarang"
+                            placeholder="Masukkan nama buku"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="jenisBarang">Jenis Buku</label>
+                        <input
+                            type="text"
+                            id="jenisBarang"
+                            placeholder="Contoh: Buku Ajar"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edisi">Edisi</label>
+                        <input
+                            type="number"
+                            id="edisi"
+                            min="1"
+                            placeholder="Contoh: 1"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="stok">Jumlah Stok</label>
+                        <input
+                            type="number"
+                            id="stok"
+                            min="0"
+                            placeholder="Masukkan jumlah stok"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="harga">Harga Buku</label>
+                        <input
+                            type="number"
+                            id="harga"
+                            min="1"
+                            placeholder="Contoh: 180000"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="cover">Nama File Cover (Opsional)</label>
+                        <input
+                            type="text"
+                            id="cover"
+                            placeholder="Contoh: buku_baru.jpg"
+                        >
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary btn-tambah">
+                    + Tambahkan Buku
+                </button>
+            </form>
+        </section>
+
+        <!--tabel katalog-->
+        <section class="stok-table-section">
+            <div class="section-heading">
+                <h2>Daftar Katalog Buku</h2>
+                <p>Data buku ditampilkan secara dinamis dari data.js.</p>
+            </div>
+            <div class="table-wrapper">
+                <table class="stok-table">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Cover</th>
+                            <th>Kode Barang</th>
+                            <th>Nama Buku</th>
+                            <th>Jenis</th>
+                            <th>Edisi</th>
+                            <th>Stok</th>
+                            <th>Harga</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelKatalogBuku">
+                        <!-- Data buku akan dimasukkan oleh JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!--tombol kembali-->
+        <div class="stok-footer-action">
+            <a href="dashboard.html" class="btn-back-bottom">
+                ← Kembali ke Dashboard
+            </a>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="dashboard-footer">
+        <p>&copy; 2026 BookStore. All Rights Reserved.</p>
+    </footer>
+    
+</body>
+</html>

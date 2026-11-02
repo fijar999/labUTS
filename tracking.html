@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tracking Pengiriman | BookStore</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/data.js" defer></script>
+    <script src="js/script.js" defer></script>
+</head>
+
+<body class="tracking-page">
+
+    <!-- HEADER -->
+    <header class="dashboard-header">
+
+        <div class="brand">
+            <h1>BookStore</h1>
+            <p>Tracking Pengiriman Buku</p>
+        </div>
+
+        <div class="header-user">
+            <a href="dashboard.html" class="btn-back">
+                ← Dashboard
+            </a>
+        </div>
+
+    </header>
+
+
+    <main class="tracking-container">
+
+        <!-- JUDUL HALAMAN -->
+        <section class="tracking-heading">
+
+            <h2>Tracking Pengiriman</h2>
+
+            <p>
+                Masukkan nomor Delivery Order (DO)
+                untuk mengetahui status pengiriman buku.
+            </p>
+
+        </section>
+
+
+        <!-- FORM PENCARIAN -->
+        <section class="tracking-search-section">
+
+            <div class="section-heading">
+                <h2>Cek Status Pengiriman</h2>
+
+                <p>
+                    Masukkan nomor DO yang ingin kamu lacak.
+                </p>
+            </div>
+
+            <form id="formTracking">
+
+                <div class="tracking-search-group">
+
+                    <input
+                        type="text"
+                        id="nomorDO"
+                        placeholder="Contoh: 20230012"
+                        required
+                    >
+
+                    <button type="submit" class="btn-primary">
+                        Cari Pengiriman
+                    </button>
+
+                </div>
+
+            </form>
+
+            <p class="tracking-hint">
+                Contoh nomor DO: 20230012 atau 20230013
+            </p>
+
+        </section>
+
+
+        <!-- HASIL TRACKING -->
+        <section id="hasilTracking" class="tracking-result" hidden>
+
+            <!-- INFORMASI PENGIRIMAN -->
+            <div class="tracking-information">
+
+                <div class="section-heading">
+                    <h2>Informasi Pengiriman</h2>
+                </div>
+
+                <div class="tracking-info-grid">
+
+                    <div class="tracking-info-card">
+                        <p>Nomor Delivery Order</p>
+                        <h3 id="hasilNomorDO">-</h3>
+                    </div>
+
+                    <div class="tracking-info-card">
+                        <p>Nama Penerima</p>
+                        <h3 id="hasilNama">-</h3>
+                    </div>
+
+                    <div class="tracking-info-card">
+                        <p>Status Pengiriman</p>
+                        <h3 id="hasilStatus">-</h3>
+                    </div>
+
+                    <div class="tracking-info-card">
+                        <p>Ekspedisi</p>
+                        <h3 id="hasilEkspedisi">-</h3>
+                    </div>
+
+                    <div class="tracking-info-card">
+                        <p>Tanggal Pengiriman</p>
+                        <h3 id="hasilTanggal">-</h3>
+                    </div>
+
+                    <div class="tracking-info-card">
+                        <p>Kode Paket</p>
+                        <h3 id="hasilPaket">-</h3>
+                    </div>
+
+                    <div class="tracking-info-card">
+                        <p>Total Pembayaran</p>
+                        <h3 id="hasilTotal">-</h3>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RIWAYAT PERJALANAN -->
+            <div class="tracking-history">
+
+                <div class="section-heading">
+                    <h2>Riwayat Perjalanan Paket</h2>
+
+                    <p>
+                        Informasi perjalanan paket berdasarkan data pengiriman.
+                    </p>
+                </div>
+
+                <div id="daftarPerjalanan" class="tracking-timeline">
+
+                    <!-- Riwayat perjalanan diisi JavaScript -->
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PESAN JIKA DATA TIDAK DITEMUKAN -->
+        <div id="pesanTracking" class="tracking-message" hidden>
+
+            Nomor Delivery Order tidak ditemukan.
+            Silakan periksa kembali nomor DO yang kamu masukkan.
+
+        </div>
+
+
+        <!-- KEMBALI -->
+        <div class="stok-footer-action">
+
+            <a href="dashboard.html" class="btn-back-bottom">
+                ← Kembali ke Dashboard
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="dashboard-footer">
+
+        <p>&copy; 2026 BookStore. All Rights Reserved.</p>
+
+    </footer>
+
+</body>
+
+</html>

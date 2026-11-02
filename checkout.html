@@ -1,0 +1,340 @@
+
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pemesanan Buku | BookStore</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/data.js" defer></script>
+    <script src="js/script.js" defer></script>
+</head>
+
+<body class="checkout-page">
+
+    <!-- HEADER -->
+    <header class="dashboard-header">
+
+        <div class="brand">
+            <h1>BookStore</h1>
+            <p>Pemesanan dan Transaksi Buku</p>
+        </div>
+
+        <div class="header-user">
+            <a href="dashboard.html" class="btn-back">
+                ← Dashboard
+            </a>
+        </div>
+
+    </header>
+
+
+    <main class="checkout-container">
+
+        <!-- JUDUL HALAMAN -->
+        <section class="checkout-heading">
+
+            <h2>Halaman Pemesanan Buku</h2>
+
+            <p>
+                Silakan lengkapi informasi pemesan dan pembayaran
+                untuk melakukan pemesanan buku.
+            </p>
+
+        </section>
+
+
+        <!-- FORM PEMESANAN -->
+        <section class="checkout-form-section">
+
+            <div class="section-heading">
+                <h2 id="judulFormPemesanan">Form Informasi Pemesanan</h2>
+                <p>Masukkan data pemesanan buku dengan lengkap.</p>
+            </div>
+
+            <form id="formCheckout">
+
+                <input type="hidden" id="idPemesanan">
+
+                <!-- INFORMASI PEMESAN -->
+                <h3 class="form-subtitle">A. Informasi Pemesan</h3>
+
+                <div class="checkout-form-grid">
+
+                    <div class="form-group">
+                        <label for="namaPemesan">Nama Pemesan</label>
+
+                        <input
+                            type="text"
+                            id="namaPemesan"
+                            placeholder="Masukkan nama pemesan"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="emailPemesan">Email Pemesan</label>
+
+                        <input
+                            type="email"
+                            id="emailPemesan"
+                            placeholder="Masukkan email pemesan"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+
+                <!-- INFORMASI BUKU -->
+                <h3 class="form-subtitle">B. Informasi Buku</h3>
+
+                <div class="checkout-form-grid">
+
+                    <div class="form-group full-width">
+                        <label for="pilihBuku">Pilih Buku</label>
+
+                        <select id="pilihBuku" required>
+
+                            <option value="">
+                                -- Pilih Buku --
+                            </option>
+
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hargaBuku">Harga Buku</label>
+
+                        <input
+                            type="text"
+                            id="hargaBuku"
+                            readonly
+                            placeholder="Harga buku otomatis"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="jumlahBuku">Jumlah Buku</label>
+
+                        <input
+                            type="number"
+                            id="jumlahBuku"
+                            min="1"
+                            value="1"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="totalPembayaran">Total Pembayaran</label>
+
+                        <input
+                            type="text"
+                            id="totalPembayaran"
+                            readonly
+                            placeholder="Total pembayaran otomatis"
+                        >
+                    </div>
+
+                </div>
+
+
+                <!-- INFORMASI PEMBAYARAN -->
+                <h3 class="form-subtitle">C. Informasi Pembayaran</h3>
+
+                <div class="checkout-form-grid">
+
+                    <div class="form-group full-width">
+
+                        <label for="metodePembayaran">
+                            Metode Pembayaran
+                        </label>
+
+                        <select id="metodePembayaran" required>
+
+                            <option value="">
+                                -- Pilih Metode Pembayaran --
+                            </option>
+
+                            <option value="Transfer Bank">
+                                Transfer Bank
+                            </option>
+
+                            <option value="E-Wallet">
+                                E-Wallet
+                            </option>
+
+                            <option value="COD">
+                                COD (Bayar di Tempat)
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TOMBOL FORM -->
+                <div class="checkout-buttons">
+
+                    <button
+                        type="submit"
+                        id="btnSimpanPesanan"
+                        class="btn-primary"
+                    >
+                        Simpan Pemesanan
+                    </button>
+
+                    <button
+                        type="button"
+                        id="btnBatalEdit"
+                        class="btn-cancel"
+                        hidden
+                    >
+                        Batal Edit
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+        <!-- LAPORAN PEMESANAN -->
+        <section class="order-summary-section" id="laporan">
+
+            <div class="section-heading">
+                <h2>Laporan Pemesanan</h2>
+
+                <p>
+                    Ringkasan seluruh pemesanan yang tersimpan.
+                </p>
+            </div>
+
+            <div class="order-summary-grid">
+
+                <div class="summary-card">
+                    <p>Total Pemesanan</p>
+                    <h3 id="jumlahPemesanan">0</h3>
+                </div>
+
+                <div class="summary-card">
+                    <p>Total Pendapatan Simulasi</p>
+                    <h3 id="totalPendapatan">Rp 0</h3>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TABEL PEMESANAN -->
+        <section class="order-table-section">
+
+            <div class="section-heading">
+                <h2>Daftar Pemesanan</h2>
+
+                <p>
+                    Kamu dapat melihat, mengubah, atau menghapus
+                    data pemesanan.
+                </p>
+            </div>
+
+            <div class="table-wrapper">
+
+                <table class="order-table">
+
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama Pemesan</th>
+                            <th>Buku</th>
+                            <th>Jumlah</th>
+                            <th>Total</th>
+                            <th>Pembayaran</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tabelPemesanan">
+
+                        <!-- Data pemesanan diisi JavaScript -->
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- HISTORY TRANSAKSI -->
+        <section class="history-section" id="history">
+
+            <div class="section-heading">
+                <h2>History Transaksi</h2>
+
+                <p>
+                    Riwayat transaksi yang telah disimpan
+                    dalam sistem BookStore.
+                </p>
+            </div>
+
+            <div class="table-wrapper">
+
+                <table class="order-table">
+
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nomor Transaksi</th>
+                            <th>Nomor DO</th>
+                            <th>Nama Pemesan</th>
+                            <th>Tanggal</th>
+                            <th>Total Pembayaran</th>
+                            <th>Metode</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tabelHistory">
+
+                        <!-- History diisi JavaScript -->
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- KEMBALI -->
+        <div class="stok-footer-action">
+
+            <a href="dashboard.html" class="btn-back-bottom">
+                ← Kembali ke Dashboard
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <footer class="dashboard-footer">
+
+        <p>&copy; 2026 BookStore. All Rights Reserved.</p>
+
+    </footer>
+
+</body>
+
+</html>
